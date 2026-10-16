@@ -1,0 +1,367 @@
+#root {
+  min-height: 100vh;
+}
+
+.demo-notice {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  color: #5b3b00;
+  background: #fff4d6;
+  border-bottom: 1px solid #f1d58b;
+  font-size: 14px;
+}
+
+.demo-notice strong {
+  color: #7b4f00;
+}
+
+.portal-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e7eaf0;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(27, 39, 65, 0.08);
+}
+
+.portal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 32px;
+  color: #ffffff;
+  background: #222a52;
+}
+
+.brand-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  color: #222a52;
+  background: #bfe8df;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.portal-eyebrow,
+.section-eyebrow {
+  margin: 0 0 5px;
+  color: #77809b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portal-header .portal-eyebrow {
+  color: #b8c1e6;
+}
+
+.portal-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.portal-role {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #74e0bc;
+}
+
+.welcome-section,
+.profile-card,
+.lesson-card,
+.actions-section {
+  margin: 32px;
+}
+
+.welcome-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-section h2,
+.profile-card h2,
+.lesson-card h2 {
+  margin: 0;
+  color: #222a52;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.04em;
+}
+
+.muted-text {
+  margin-top: 8px;
+  color: #77809b;
+}
+
+.enrollment-badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #20735f;
+  background: #e1f7ef;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.profile-card {
+  padding: 24px;
+  border: 1px solid #e7eaf0;
+  border-radius: 18px;
+  background: #fbfcfe;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.profile-grid > div {
+  display: grid;
+  gap: 6px;
+}
+
+.field-label,
+.metric-label {
+  color: #77809b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-grid strong {
+  color: #222a52;
+  font-size: 16px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 32px;
+}
+
+.metric-card {
+  min-height: 148px;
+  padding: 22px;
+  border-radius: 18px;
+  color: #222a52;
+  border: 1px solid transparent;
+}
+
+.metric-card-purple {
+  background: #f0edff;
+  border-color: #ddd6ff;
+}
+
+.metric-card-green {
+  background: #e5f8f0;
+  border-color: #c8eedf;
+}
+
+.metric-card-orange {
+  background: #fff0dc;
+  border-color: #f7dbb2;
+}
+
+.metric-card-blue {
+  background: #e8f3ff;
+  border-color: #cce4ff;
+}
+
+.metric-label {
+  margin: 0;
+}
+
+.metric-value {
+  margin: 18px 0 6px;
+  color: #222a52;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.metric-detail {
+  margin: 0;
+  color: #697391;
+  font-size: 13px;
+}
+
+.lesson-card {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px dashed #b8c1e6;
+  border-radius: 18px;
+  background: #f6f7ff;
+}
+
+.lesson-card h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.lesson-card p:last-child {
+  color: #697391;
+}
+
+.lesson-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  color: #5144a6;
+  background: #e4e0ff;
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 800;
+}
+
+code {
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: #5144a6;
+  background: #e4e0ff;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.actions-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 11px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary-button {
+  color: #ffffff;
+  background: #222a52;
+  border: 1px solid #222a52;
+}
+
+.secondary-button {
+  color: #222a52;
+  background: #ffffff;
+  border: 1px solid #d9deeb;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+.action-message {
+  flex-basis: 100%;
+  margin: 0;
+  color: #20735f;
+  font-size: 14px;
+}
+
+.portal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 32px;
+  color: #8a92a8;
+  border-top: 1px solid #e7eaf0;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .profile-grid,
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portal-header,
+  .welcome-section,
+  .portal-footer {
+    align-items: flex-start;
+  }
+
+  .welcome-section,
+  .portal-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .demo-notice {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .portal-shell {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .portal-header,
+  .welcome-section,
+  .profile-card,
+  .lesson-card,
+  .actions-section {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+
+  .portal-header {
+    padding: 20px 18px;
+  }
+
+  .profile-grid,
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+
+  .portal-footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
