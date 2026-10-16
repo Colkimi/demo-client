@@ -1,7 +1,18 @@
 import { useState } from 'react'
 import MetricCard from './MetricCard'
 
-const initialProfile = {
+type Profile = {
+  name: string
+  studentId: string
+  program: string
+  year: string
+  role: string
+  status: string
+  feeBalance: string
+  grade: string
+}
+
+const initialProfile: Profile = {
   name: 'Colkimi',
   studentId: 'PA-2027-001',
   program: 'Software Engineering',
@@ -12,20 +23,83 @@ const initialProfile = {
   grade: 'D',
 }
 
+const savedProfileKey = 'pkulel-demo-profile'
+
+function loadSavedProfile(): Profile {
+  const savedProfile = localStorage.getItem(savedProfileKey)
+
+  if (!savedProfile) {
+    return initialProfile
+  }
+
+  const savedValues = JSON.parse(savedProfile) as Partial<Profile>
+
+  return {
+    ...initialProfile,
+    ...savedValues,
+  }
+}
+
 function StudentPortal() {
-  const [profile, setProfile] = useState(initialProfile)
+  const [profile, setProfile] = useState<Profile>(loadSavedProfile)
   const [message, setMessage] = useState('')
 
   function resetDemo() {
+    localStorage.removeItem(savedProfileKey)
     setProfile(initialProfile)
     setMessage('The original demo values have been restored.')
   }
 
   function simulateSave() {
-    setMessage(
-      'For educational purposes only: changes made in DevTools are not saved or sent to a server.',
-    )
-  }
+      const readEditedField = (fields: string[], currentValue: string) => {
+        const values = fields
+          .map(
+            (field) =>
+              document
+                .querySelector<HTMLElement>(`[data-demo-field="${field}"]`)
+                ?.textContent?.trim() ?? '',
+          )
+          .filter(Boolean)
+
+        return values.find((value) => value !== currentValue) ?? values[0]
+      }
+
+      const editedValues = {
+        name: readEditedField(['student-name', 'profile-name'], profile.name),
+        role: readEditedField(
+          ['header-role', 'role'],
+          profile.role,
+        ),
+        status: readEditedField(['status', 'enrollment'], profile.status),
+        feeBalance: readEditedField(['fee-balance'], profile.feeBalance),
+        grade: readEditedField(['grade'], profile.grade),
+        studentId: readEditedField(['student-id'], profile.studentId),
+        program: readEditedField(['program'], profile.program),
+        year: readEditedField(['year'], profile.year),
+      }
+
+      if (Object.values(editedValues).some((value) => !value)) {
+        setMessage('Could not read all demo fields. Please reload the page and try again.')
+        return
+      }
+
+      const editedProfile = {
+        name: editedValues.name ?? profile.name,
+        studentId: editedValues.studentId ?? profile.studentId,
+        program: editedValues.program ?? profile.program,
+        year: editedValues.year ?? profile.year,
+        role: editedValues.role ?? profile.role,
+        status: editedValues.status ?? profile.status,
+        feeBalance: editedValues.feeBalance ?? profile.feeBalance,
+        grade: editedValues.grade ?? profile.grade,
+      }
+
+      localStorage.setItem(savedProfileKey, JSON.stringify(editedProfile))
+      setProfile(editedProfile)
+      setMessage(
+        'Insecure demo save: edited DOM values were trusted and stored locally. Refresh to see them restored.',
+      )
+    }
 
   return (
     <main className="portal-shell">
@@ -96,6 +170,7 @@ function StudentPortal() {
       <section className="metrics-grid" aria-label="Account summary">
         <MetricCard
           label="Fee balance"
+          field="fee-balance"
           value={profile.feeBalance}
           detail="Due by October 30"
           accent="purple"
@@ -103,6 +178,7 @@ function StudentPortal() {
 
         <MetricCard
           label="Current grade"
+          field="grade"
           value={profile.grade}
           detail="CS-301 · Web Systems"
           accent="green"
@@ -110,6 +186,7 @@ function StudentPortal() {
 
         <MetricCard
           label="Account role"
+          field="role"
           value={profile.role}
           detail="Standard demo permissions"
           accent="orange"
@@ -117,6 +194,7 @@ function StudentPortal() {
 
         <MetricCard
           label="Enrollment"
+          field="enrollment"
           value={profile.status}
           detail="Spring 2027 semester"
           accent="blue"
